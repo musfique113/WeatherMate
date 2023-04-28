@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,19 +12,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var ff;
 
   void getData() async{
-    await Future.delayed(Duration(seconds: 5),(){
-      ff = "Test f";
-    });
-    print(ff);
+    Response response = await get(Uri.parse("https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=0dadc0ec41869d72cab605ebf70d5c96}"));
+    //Response response =await get("https://mytimeapi.herokuapp.com/time/Asia/Kolkata" as Uri);
+    print(response.body);
   }
-
-  void showData() async{
-    getData();
-    print(ff);
-  }
+  // var ff;
+  //
+  // void getData() async{
+  //   await Future.delayed(Duration(seconds: 5),(){
+  //     ff = "Test f";
+  //   });
+  //   print(ff);
+  // }
+  //
+  // void showData() async{
+  //   getData();
+  //   print(ff);
+  // }
 
   // void timer(){
   //   //timer for 5 second
@@ -33,8 +43,8 @@ class _HomeState extends State<Home> {
   int counter = 1 ;
   @override
   void initState() {
-    //getData();
-    showData();
+    getData();
+    //showData();
     //timer();
     // TODO: implement initState
     super.initState();
