@@ -8,19 +8,34 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var ff;
 
-  void timer(){
-    //timer for 5 second
-    Future.delayed(Duration(seconds: 5),(){
-      print("Arlame is going on");
+  void getData() async{
+    await Future.delayed(Duration(seconds: 5),(){
+      ff = "Test f";
     });
-    print("Do onther stuf");
+    print(ff);
   }
+
+  void showData() async{
+    getData();
+    print(ff);
+  }
+
+  // void timer(){
+  //   //timer for 5 second
+  //   Future.delayed(Duration(seconds: 5),(){
+  //     print("Arlame is going on");
+  //   });
+  //   print("Do onther stuf");
+  // }
 
   int counter = 1 ;
   @override
   void initState() {
-    timer();
+    //getData();
+    showData();
+    //timer();
     // TODO: implement initState
     super.initState();
     print("This is an init state");
