@@ -9,14 +9,19 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String Temperature = 'Loading';
+
   void startApp() async {
     worker instance = worker(location: "Dhaka");
     await instance.getData();
+    setState(() {
+      Temperature = instance.temp;
+    });
     print(instance.airSpeed);
-    print(instance.description);
-    print(instance.humidity);
-    print(instance.location);
-    print(instance.temp);
+    // print(instance.description);
+    // print(instance.humidity);
+    // print(instance.location);
+    // print(instance.temp);
   }
 
   @override
@@ -37,7 +42,7 @@ class _LoadingState extends State<Loading> {
                 Navigator.pushNamed(context, "/home");
               },
               icon: Icon(Icons.add_to_home_screen),
-              label: Text("Go to home"))
+              label: Text(Temperature))
         ],
       ),
     ));
