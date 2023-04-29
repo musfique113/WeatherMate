@@ -16,7 +16,8 @@ class _HomeState extends State<Home> {
   void getData() async{
     Response response = await get(Uri.parse("https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=0dadc0ec41869d72cab605ebf70d5c96}"));
     //Response response =await get("https://mytimeapi.herokuapp.com/time/Asia/Kolkata" as Uri);
-    print(response.body);
+    Map data = jsonDecode(response.body);
+    print(data);
   }
   // var ff;
   //
