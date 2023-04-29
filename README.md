@@ -1,16 +1,24 @@
-# weather_mate
+## Weather Mate App
 
-A new Flutter project.
+The Weather Mate App is a Flutter practice project that displays weather information for a specified location. The app utilizes the OpenWeatherMap API to retrieve weather data such as temperature, humidity, weather condition, and airspeed. 
 
-## Getting Started
+The Weather Mate App has the following features:
 
-This project is a starting point for a Flutter application.
+- User can search for weather information by entering a location
+- User can view current weather information for the specified location
+- User can view weather forecast for the next five days
 
-A few resources to get you started if this is your first Flutter project:
+### Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Screenshot 1](screenshots/screenshot_1.png)
+![Screenshot 2](screenshots/screenshot_2.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### APIs
+
+The Weather Mate App uses the following APIs:
+
+- OpenWeatherMap API - https://openweathermap.org/api
+
+
+
+

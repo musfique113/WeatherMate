@@ -24,13 +24,13 @@ class worker {
 
       //Getting Temp,Humidity
       Map temp_data = data['main'];
-      String getTemp = temp_data['temp'].toString();
+      double getTemp = temp_data['temp'] - 273.15;
       String getHumidity = temp_data['humidity'].toString();
       //print(temp);
 
       //Air speed
       Map wind = data['wind'];
-      String getAir_speed = wind['speed'].toString();
+      double getAir_speed = wind['speed']/0.27777777;
 
       //getting despription
       List weather_data = data['weather'];
@@ -49,9 +49,9 @@ class worker {
       // print(locationName);
 
       //assigning values
-      temp = getTemp;
+      temp = getTemp.toString();
       humidity = getHumidity;
-      airSpeed = getAir_speed;
+      airSpeed = getAir_speed.toString();
       description = getDesc;
       main = getMain_des;
     } catch (e) {

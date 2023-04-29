@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
             onPressed: () {},
           ),
           Text(info["temp_value"]),
-          Text(info["main_value"]),
+          Text(info["air_speed_value"]),
         ],
       ),
     );
