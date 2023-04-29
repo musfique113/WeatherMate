@@ -11,8 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
   @override
   void initState() {
     super.initState();
@@ -32,6 +30,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    Map info = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>;
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Activity"),
@@ -39,10 +38,10 @@ class _HomeState extends State<Home> {
       body: Column(
         children: <Widget>[
           FloatingActionButton(
-            onPressed: (){
-            },
+            onPressed: () {},
           ),
-          Text("test")
+          Text(info["temp_value"]),
+          Text(info["main_value"]),
         ],
       ),
     );
