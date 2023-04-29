@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_mate/Worker/worker.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _LoadingState extends State<Loading> {
   String air_speed = '';
   String des = '';
   String main = '';
+
   void startApp() async {
     worker instance = worker(location: "Dhaka");
     await instance.getData();
@@ -30,12 +32,14 @@ class _LoadingState extends State<Loading> {
     air_speed = instance.humidity;
     des = instance.description;
     main = instance.main;
-    Navigator.pushReplacementNamed(context, '/home', arguments: {
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushReplacementNamed(context, '/home', arguments: {
       "temp_value":temp,
       "hum_value": hum,
       "des_value": des,
       "main_value":main,
       "air_speed_value":air_speed
+    });
     });
   }
 
@@ -49,7 +53,39 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text("Loading")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 70,
+            ),
+            Image.asset(
+              "images/icon.png",
+              height: 100,
+              width: 100,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              "WeatherMate",
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            SpinKitThreeBounce(
+              color: Color(0xFFDBEEFF),
+              size: 30.0,
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.blue[300],
     );
   }
 }
