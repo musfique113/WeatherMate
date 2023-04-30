@@ -38,13 +38,23 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.blue,
+                Colors.lightBlueAccent
+              ]
+            ),
+          ),
           child: Column(
             children: [
               Container( //this is the serarch contailer
                 padding: EdgeInsets.symmetric(horizontal: 8),
                 margin: EdgeInsets.symmetric(horizontal: 15,vertical: 25),
                 decoration: BoxDecoration(
-                  color: Colors.black26,
+                  color: Colors.yellowAccent,
                   borderRadius: BorderRadius.circular(24)
                 ),
                 child: Row(
@@ -63,9 +73,78 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(14)
+                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 17),
+                      padding: EdgeInsets.all(30),
+                      child:Text('afdsf') ,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 292,
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(14)
+                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 17,vertical: 18),
+                      padding: EdgeInsets.all(30),
+                      child:Text('afdsf') ,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(14)
+                      ),
+                      margin: EdgeInsets.fromLTRB(20,0,10,0),
+                      padding: EdgeInsets.all(30),
+                      height: 150,
+                      child:Text('afdsf') ,
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(14)
+                      ),
+                      margin: EdgeInsets.fromLTRB(10,0,20,0),
+                      padding: EdgeInsets.all(30),
+                      height: 150,
+                      child:Text('afdsf') ,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.all(55),
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Data provided by Opernwathermap.org")
+                  ],
+                ),
               )
             ],
-          )
+          ),
         ),
       ),
     );
