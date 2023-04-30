@@ -83,9 +83,13 @@ class _HomeState extends State<Home> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.blue, Colors.lightBlueAccent]),
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.blue,
+                Colors.lightBlueAccent,
+              ], // Close the list of colors with a square bracket
+            ),
           ),
           child: Column(
             children: [
@@ -94,7 +98,7 @@ class _HomeState extends State<Home> {
                 padding: EdgeInsets.symmetric(horizontal: 8),
                 margin: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
                 decoration: BoxDecoration(
-                    color: Colors.yellowAccent,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(24)),
                 child: Row(
                   children: [
@@ -103,7 +107,7 @@ class _HomeState extends State<Home> {
                       child: Container(
                         child: Icon(
                           Icons.search,
-                          color: Colors.greenAccent,
+                          color: Colors.black,
                         ),
                         margin: EdgeInsets.fromLTRB(4, 0, 8, 0),
                       ),
