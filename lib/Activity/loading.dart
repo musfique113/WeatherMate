@@ -21,7 +21,7 @@ class _LoadingState extends State<Loading> {
   void startApp() async {
     worker instance = worker(location: "Dhaka");
     await instance.getData();
-    print(instance.airSpeed);
+    // print(instance.airSpeed);
     // print(instance.description);
     // print(instance.humidity);
     // print(instance.location);
@@ -32,7 +32,7 @@ class _LoadingState extends State<Loading> {
     air_speed = instance.humidity;
     des = instance.description;
     main = instance.main;
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       Navigator.pushReplacementNamed(context, '/home', arguments: {
       "temp_value":temp,
       "hum_value": hum,
