@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter_weather_icons/flutter_weather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'loading.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -32,9 +33,49 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     //Map info = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>;
-    var cityName = ["Dhaka", "Rangpur", "Panchagarh", "Dinajpur", "Chittagong", "Cox's Bazar", "Khulna", "Jessore", "Rajshahi", "Natore", "Bogra", "Narayanganj", "Narsingdi", "Mymensingh", "Comilla", "Bhola", "Noakhali", "Barisal", "Patuakhali", "Jhenaidah", "Moulvibazar"];
+    var cityName = [
+      "Dhaka",
+      "Rangpur",
+      "Panchagarh",
+      "Dinajpur",
+      "Chittagong",
+      "Cox's Bazar",
+      "Khulna",
+      "Jessore",
+      "Rajshahi",
+      "Natore",
+      "Bogra",
+      "Narayanganj",
+      "Narsingdi",
+      "Mymensingh",
+      "Comilla",
+      "Bhola",
+      "Noakhali",
+      "Barisal",
+      "Patuakhali",
+      "Jhenaidah",
+      "Moulvibazar"
+    ];
     final _random = new Random();
     var city = cityName[_random.nextInt(cityName.length)];
+    Map info =
+        ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>;
+    String temp = (((info['temp_value']).toString()).substring(0, 4));
+    String icon = info['icon_value'];
+    String humidity = (info['hum_value']);
+    String wind = (((info['air_speed_value']).toString()).substring(0, 4));
+    String cityX = info['city_value'];
+    String des = info['des_value'];
+
+    //String humidity = (((info['hum_value']).toString()).substring(0,4));
+    // String wind = (((info['air_speed_value']).toString()).substring(0,4));
+    //String wind = (((info['air_speed_value']).toString()).substring(0,4));
+
+    // temp_value":temp,
+    //   "hum_value": hum,
+    //   "des_value": des,
+    //   "main_value":main,
+    //   "air_speed_value":air_speed
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -42,35 +83,35 @@ class _HomeState extends State<Home> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.blue,
-                Colors.lightBlueAccent
-              ]
-            ),
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Colors.blue, Colors.lightBlueAccent]),
           ),
           child: Column(
             children: [
-              Container( //this is the serarch contailer
+              Container(
+                //this is the serarch contailer
                 padding: EdgeInsets.symmetric(horizontal: 8),
-                margin: EdgeInsets.symmetric(horizontal: 15,vertical: 25),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
                 decoration: BoxDecoration(
-                  color: Colors.yellowAccent,
-                  borderRadius: BorderRadius.circular(24)
-                ),
+                    color: Colors.yellowAccent,
+                    borderRadius: BorderRadius.circular(24)),
                 child: Row(
                   children: [
                     GestureDetector(
-                    onTap: (){},
-                      child: Container(child: Icon(Icons.search, color: Colors.greenAccent,),margin: EdgeInsets.fromLTRB(4, 0, 8, 0),),
+                      onTap: () {},
+                      child: Container(
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.greenAccent,
+                        ),
+                        margin: EdgeInsets.fromLTRB(4, 0, 8, 0),
+                      ),
                     ),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search $city"
-                        ),
+                            border: InputBorder.none, hintText: "Search $city"),
                       ),
                     )
                   ],
@@ -81,26 +122,33 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(14)
-                      ),
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(14)),
                       margin: EdgeInsets.symmetric(horizontal: 17),
                       padding: EdgeInsets.all(30),
-                      child:Row(
-                        children: [
-                          //Image.network("fsdfs",scale: 1.0,),
-                          Column(children: [
-                            Text("Cloudy",style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
-                            ),),
-                            Text("In dhaka",style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
-                            ),)
-                          ],)
-                      ]
-                      ) ,
+                      child: Row(children: [
+                        Image.network(
+                          "https://openweathermap.org/img/wn/$icon@2x.png",
+                          scale: 1.0,
+                        ),
+                        SizedBox(
+                          width: 40,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "$des".toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "in $cityX",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        )
+                      ]),
                     ),
                   ),
                 ],
@@ -112,27 +160,28 @@ class _HomeState extends State<Home> {
                       height: 220,
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(14)
-                      ),
-                      margin: EdgeInsets.symmetric(horizontal: 17,vertical: 18),
+                          borderRadius: BorderRadius.circular(14)),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 17, vertical: 18),
                       padding: EdgeInsets.all(30),
-                      child:Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                        Icon(WeatherIcons.wiThermometer),
-                        SizedBox(height: 25,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("41",style: TextStyle(
-                              fontSize: 65
-                            ),),
-                            Text("°C",style: TextStyle(
-                              fontSize: 60
-                            )),
-                          ],
-                        )
-                      ]),
+                            Icon(WeatherIcons.wiThermometer),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "$temp",
+                                  style: TextStyle(fontSize: 65),
+                                ),
+                                Text("°C", style: TextStyle(fontSize: 60)),
+                              ],
+                            )
+                          ]),
                     ),
                   ),
                 ],
@@ -144,12 +193,11 @@ class _HomeState extends State<Home> {
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(14)
-                      ),
-                      margin: EdgeInsets.fromLTRB(20,0,10,0),
+                          borderRadius: BorderRadius.circular(14)),
+                      margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
                       padding: EdgeInsets.all(30),
                       height: 150,
-                      child:Column(
+                      child: Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -157,26 +205,28 @@ class _HomeState extends State<Home> {
                               Icon(WeatherIcons.wiDayWindy),
                             ],
                           ),
-                          SizedBox(height: 10,),
-                          Text("20.9",style: TextStyle(
-                              fontSize: 31,
-                              fontWeight: FontWeight.bold,
-                            )),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text("$wind",
+                              style: TextStyle(
+                                fontSize: 31,
+                                fontWeight: FontWeight.bold,
+                              )),
                           Text("KM/h"),
                         ],
-                      ) ,
+                      ),
                     ),
                   ),
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(14)
-                      ),
-                      margin: EdgeInsets.fromLTRB(10,0,20,0),
+                          borderRadius: BorderRadius.circular(14)),
+                      margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
                       padding: EdgeInsets.all(30),
                       height: 150,
-                      child:Column(
+                      child: Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -184,25 +234,26 @@ class _HomeState extends State<Home> {
                               Icon(WeatherIcons.wiHumidity),
                             ],
                           ),
-                          SizedBox(height: 10,),
-                          Text("60",style: TextStyle(
-                              fontSize: 31,
-                              fontWeight: FontWeight.bold,
-                            )),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text("$humidity",
+                              style: TextStyle(
+                                fontSize: 31,
+                                fontWeight: FontWeight.bold,
+                              )),
                           Text("Percent"),
                         ],
-                      ) ,
+                      ),
                     ),
                   ),
                 ],
               ),
               Container(
                 padding: EdgeInsets.all(55),
-                child:Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Data provided by Opernwathermap.org")
-                  ],
+                  children: [Text("Data provided by Opernwathermap.org")],
                 ),
               )
             ],

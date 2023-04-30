@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
@@ -14,6 +15,7 @@ class worker {
   String airSpeed = '';
   String description = '';
   String main = '';
+  String icon = '';
 
   Future<void> getData() async {
     try {
@@ -30,13 +32,15 @@ class worker {
 
       //Air speed
       Map wind = data['wind'];
-      double getAir_speed = wind['speed']/0.27777777;
+      double getAir_speed = wind['speed'] / 0.27777777;
 
       //getting despription
       List weather_data = data['weather'];
       Map weather_main_data = weather_data[0];
       String getMain_des = weather_main_data['main'];
       String getDesc = weather_main_data['description'];
+      //print(icon);
+
       //print(weather_data);
       //print(weather_main_data['main']);
 
@@ -54,12 +58,14 @@ class worker {
       airSpeed = getAir_speed.toString();
       description = getDesc;
       main = getMain_des;
+      icon = weather_main_data["icon"].toString();
     } catch (e) {
       temp = "Error!! No city found.";
       humidity = "Error!! No city found.";
       airSpeed = "Error!! No city found.";
       description = "Error!! No city found.";
       main = "Error!! No city found.";
+      icon = "Error!! No city found.";
     }
   }
 }
