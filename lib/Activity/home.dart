@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
-
+import 'package:flutter_weather_icons/flutter_weather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -35,7 +35,9 @@ class _HomeState extends State<Home> {
     var cityName = ["Dhaka", "Rangpur", "Panchagarh", "Dinajpur", "Chittagong", "Cox's Bazar", "Khulna", "Jessore", "Rajshahi", "Natore", "Bogra", "Narayanganj", "Narsingdi", "Mymensingh", "Comilla", "Bhola", "Noakhali", "Barisal", "Patuakhali", "Jhenaidah", "Moulvibazar"];
     final _random = new Random();
     var city = cityName[_random.nextInt(cityName.length)];
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -84,7 +86,21 @@ class _HomeState extends State<Home> {
                       ),
                       margin: EdgeInsets.symmetric(horizontal: 17),
                       padding: EdgeInsets.all(30),
-                      child:Text('afdsf') ,
+                      child:Row(
+                        children: [
+                          //Image.network("fsdfs",scale: 1.0,),
+                          Column(children: [
+                            Text("Cloudy",style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold
+                            ),),
+                            Text("In dhaka",style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold
+                            ),)
+                          ],)
+                      ]
+                      ) ,
                     ),
                   ),
                 ],
@@ -93,14 +109,30 @@ class _HomeState extends State<Home> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 292,
+                      height: 220,
                       decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(14)
                       ),
                       margin: EdgeInsets.symmetric(horizontal: 17,vertical: 18),
                       padding: EdgeInsets.all(30),
-                      child:Text('afdsf') ,
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        Icon(WeatherIcons.wiThermometer),
+                        SizedBox(height: 25,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("41",style: TextStyle(
+                              fontSize: 65
+                            ),),
+                            Text("°C",style: TextStyle(
+                              fontSize: 60
+                            )),
+                          ],
+                        )
+                      ]),
                     ),
                   ),
                 ],
@@ -117,7 +149,22 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.fromLTRB(20,0,10,0),
                       padding: EdgeInsets.all(30),
                       height: 150,
-                      child:Text('afdsf') ,
+                      child:Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(WeatherIcons.wiDayWindy),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          Text("20.9",style: TextStyle(
+                              fontSize: 31,
+                              fontWeight: FontWeight.bold,
+                            )),
+                          Text("KM/h"),
+                        ],
+                      ) ,
                     ),
                   ),
                   Expanded(
@@ -129,7 +176,22 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.fromLTRB(10,0,20,0),
                       padding: EdgeInsets.all(30),
                       height: 150,
-                      child:Text('afdsf') ,
+                      child:Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(WeatherIcons.wiHumidity),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          Text("60",style: TextStyle(
+                              fontSize: 31,
+                              fontWeight: FontWeight.bold,
+                            )),
+                          Text("Percent"),
+                        ],
+                      ) ,
                     ),
                   ),
                 ],
