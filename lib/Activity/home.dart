@@ -13,6 +13,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController searchController = new TextEditingController(
+
+  );
   @override
   void initState() {
     super.initState();
@@ -63,7 +66,8 @@ class _HomeState extends State<Home> {
     String temp = (((info['temp_value']).toString()).substring(0, 4));
     String icon = info['icon_value'];
     String humidity = (info['hum_value']);
-    String wind = (((info['air_speed_value']).toString()).substring(0, 4));
+    //String wind = (((info['air_speed_value']).toString()).substring(0, 4));
+    String wind = ((info['air_speed_value']).toString().substring(0,4));
     String cityX = info['city_value'];
     String des = info['des_value'];
 
@@ -103,7 +107,12 @@ class _HomeState extends State<Home> {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        //print(searchController.text);
+                        Navigator.pushNamed(context, '/loading',arguments: {
+                          "searchText" : searchController.text,
+                        });
+                      },
                       child: Container(
                         child: Icon(
                           Icons.search,
@@ -114,6 +123,7 @@ class _HomeState extends State<Home> {
                     ),
                     Expanded(
                       child: TextField(
+                        controller: searchController,
                         decoration: InputDecoration(
                             border: InputBorder.none, hintText: "Search $city"),
                       ),
@@ -254,7 +264,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               Container(
-                padding: EdgeInsets.all(55),
+                padding: EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [Text("Data provided by Opernwathermap.org")],

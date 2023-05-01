@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'Activity/home.dart';
 import 'Activity/loading.dart';
@@ -9,6 +11,7 @@ void main() {
     routes:{
       "/" : (context) => Loading(),
       "/home" : (context) => Home(),
+      "/loading": (context) => Loading(),
     } ,
   ));
 }
