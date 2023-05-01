@@ -10,8 +10,9 @@ The Weather Mate App has the following features:
 
 ### Screenshots
 
-![Screenshot 1](screenshots/screenshot_1.png)
-![Screenshot 2](screenshots/screenshot_2.png)
+<img src="https://user-images.githubusercontent.com/53111065/235493989-15893ec9-f9c5-4337-baca-28b363e6f778.png" alt="loadin_weatheMate" width="200" height="400"> <img src="https://user-images.githubusercontent.com/53111065/235493997-b76dd3f3-0790-4b8b-89c9-e6ecf2c211e6.png" alt="main_weatherMate" width="200" height="400">
+
+
 
 ### APIs
 
