@@ -60,12 +60,12 @@ class worker {
       main = getMain_des;
       icon = weather_main_data["icon"].toString();
     } catch (e) {
-      temp = "Error!! No city found.";
-      humidity = "Error!! No city found.";
-      airSpeed = "Error!! No city found.";
-      description = "Error!! No city found.";
-      main = "Error!! No city found.";
-      icon = "Error!! No city found.";
+      temp = "NA";
+      humidity = "NA";
+      airSpeed = "NA";
+      description = "NA";
+      main = "NA";
+      icon = "03n";
     }
   }
 }

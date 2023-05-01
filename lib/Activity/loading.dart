@@ -67,36 +67,39 @@ class _LoadingState extends State<Loading> {
     }
     startApp(city);
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 70,
-            ),
-            Image.asset(
-              "images/icon.png",
-              height: 100,
-              width: 100,
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              "WeatherMate",
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            SpinKitThreeBounce(
-              color: Color(0xFFDBEEFF),
-              size: 30.0,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 70,
+              ),
+              SizedBox(height: 220,),
+              Image.asset(
+                "images/icon.png",
+                height: 100,
+                width: 100,
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Text(
+                "WeatherMate",
+                style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              SpinKitThreeBounce(
+                color: Color(0xFFDBEEFF),
+                size: 30.0,
+              ),
+            ],
+          ),
         ),
       ),
       backgroundColor: Colors.blue[300],
