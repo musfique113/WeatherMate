@@ -1,4 +1,5 @@
 ## Weather Mate App
+[![wakatime](https://wakatime.com/badge/user/18368562-fe00-4dd1-a78f-9403210fea47/project/10198cbf-460d-44c3-b5ae-bb0baa5da655.svg)](https://wakatime.com/badge/user/18368562-fe00-4dd1-a78f-9403210fea47/project/10198cbf-460d-44c3-b5ae-bb0baa5da655)
 
 The Weather Mate App is a Flutter practice project that displays weather information for a specified location. The app utilizes the OpenWeatherMap API to retrieve weather data such as temperature, humidity, weather condition, and airspeed. 
 
